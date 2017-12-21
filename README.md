@@ -1,3 +1,35 @@
+### Tandem's modifications:
+
+*Description and metatags*
+
+You can use the data fields or free text the description and tags:
+```
+seo:
+  description: byline
+  metatags: tags
+```
+OR
+```
+seo:
+  description: Super TRILLY TRONIC
+  metatags: sup, trill, tronic
+```
+
+*Twitter*
+
+You can add Twitter tag definition as well.  The defaults are defined in the node module with the exception of the image, which is defined in metalsmith.json:
+
+```
+twitter:
+    siteurl: https://thinktandem.io
+    card: summary
+    site: @ThinkTandem
+```
+The image uses either the image tag in the md or the image defined in metalsmith.json.
+
+The title and description are taken from the seo title and description, I didn't think we needed to get that granular with it.
+
+
 metalsmith-seo-checker
 ==========================
 
