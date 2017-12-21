@@ -24,11 +24,39 @@ twitter:
     siteurl: https://thinktandem.io
     card: summary
     site: @ThinkTandem
+    image: whatever
 ```
 The image uses either the image tag in the md or the image defined in metalsmith.json.
 
 The title and description are taken from the seo title and description, I didn't think we needed to get that granular with it.
 
+*Metatags*
+
+Slap this in your html.html (or similar header file template):
+
+```html
+<title>{{config.title}} | {{title}}</title>
+<meta name="robots" content="{{seo.robots}}">
+<link rel="canonical" href="{{seo.canonical}}" />
+<meta property="og:url" content="{{seo.canonical}}" />
+<meta property="og:title" content="{{seo.ogp.title}}" />
+<meta name="description" content="{{seo.description}}">
+<meta property="og:description" content="{{seo.description}}" />
+<meta name="keywords" content="{{seo.keywords}}" />
+{% if seo.ogp.type %}
+<meta property="og:type" content="{{seo.ogp.type}}" />
+{% else %}
+<meta property="og:type" content="website" />
+{% endif %}
+{% if seo.ogp.image %}
+<meta property="og:image" content="{{seo.ogp.image}}" />
+{% endif %}
+<meta name="twitter:card" content="{{twitter.card}}" />
+<meta name="twitter:site" content="{{twitter.site}}" />
+<meta name="twitter:title" content="{{title}}" />
+<meta name="twitter:description" content="{{seo.description}}" />
+<meta name="twitter:image" content="{{twitter.image}}" />
+```
 
 metalsmith-seo-checker
 ==========================
